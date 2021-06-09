@@ -55,3 +55,4 @@ gem 'rexml', '~> 3.2', '>= 3.2.5'
 gem 'minitest', group: :test
 gem 'minitest-reporters', group: :test
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem 'bcrypt', '~> 3.1', '>= 3.1.11'
