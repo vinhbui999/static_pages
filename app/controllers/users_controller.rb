@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def create #handle signup failure
     @user = User.new(user_params)
     if @user.save
+      log_in @user #automatically login after signup
       flash[:success] = "Welcome to the Sample App!" #display temporary message
       redirect_to @user #redirect to user_url(@user)
     else

@@ -56,3 +56,4 @@ gem 'minitest', group: :test
 gem 'minitest-reporters', group: :test
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
+gem 'jquery-rails', '4.4.0'
