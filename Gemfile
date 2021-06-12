@@ -57,3 +57,5 @@ gem 'minitest-reporters', group: :test
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 gem 'jquery-rails', '4.4.0'
+gem 'will_paginate', '3.1.8'
+gem 'bootstrap-will_paginate', '1.0.0'

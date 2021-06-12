@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
   resources :users
   get '/signup', to: 'users#new' #== signup_path
+  get '/edit', to: 'users#edit'
   get '/help', to: 'static_pages#help' #== help_path
   get '/about', to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'  
