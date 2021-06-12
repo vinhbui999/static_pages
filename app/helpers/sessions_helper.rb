@@ -40,7 +40,7 @@ module SessionsHelper
 
 
     #return true if given user is the current user
-    def current_user?()user
+    def current_user?(user)
         user && user == current_user
     end
 
