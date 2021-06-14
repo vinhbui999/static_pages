@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def index #all users, users_path
     # @users = User.all
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page], per_page: 10)
   end
 
   def new #automatically call new.html
@@ -19,9 +19,12 @@ class UsersController < ApplicationController
   def create #handle signup failure
     @user = User.new(user_params)
     if @user.save
-      log_in @user #automatically login after signup
-      flash[:success] = "Welcome to the Sample App!" #display temporary message
-      redirect_to @user #redirect to user_url(@user)
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
+      # log_in @user #automatically login after signup
+      # flash[:success] = "Welcome to the Sample App!" #display temporary message
+      # redirect_to @user #redirect to user_url(@user)
     else
       render 'new' #rerender if invalid infomation
     end
