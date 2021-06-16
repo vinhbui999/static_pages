@@ -6,7 +6,7 @@ class User < ApplicationRecord
     has_many :passive_relationships, class_name: "Relationship",
                                         foreign_key: "followed_id",
                                         dependent: :destroy
-    has_many :following, through: :active_relationships, source: :followed
+    has_many :following, through: :active_relationships, source: :followed #this mean override, following array is the set of followed ids
     has_many :followers, through: :passive_relationships, source: :follower
     #dependent micropost to be destroyed when user destroy
     attr_accessor :remember_token, :activation_token, :reset_token
