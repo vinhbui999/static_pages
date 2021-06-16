@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
   
   get 'sessions/new'
-  resources :users
+  resources :users do
+    member do 
+      get :following, :followers
+    end
+  end
+
   get '/signup', to: 'users#new' #== signup_path
   get '/edit', to: 'users#edit'
   get '/help', to: 'static_pages#help' #== help_path
@@ -19,4 +24,6 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :edit, :create, :update]
   resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
+
 end

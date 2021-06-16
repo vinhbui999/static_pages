@@ -30,8 +30,16 @@
 # end
 
 #create microposts for 6 first users
-users = User.order(:create_at).take(6)
-50.times do 
-    content = "Random contents Bla..bla..bla"
-    users.each {|user| user.microposts.create!(content: content)}
-end
+# users = User.order(:create_at).take(6)
+# 50.times do 
+#     content = "Random contents Bla..bla..bla"
+#     users.each {|user| user.microposts.create!(content: content)}
+# end
+
+#create following relationships
+users = User.all
+user = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
