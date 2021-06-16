@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 5)
   end
 
   def create #handle signup failure
@@ -56,13 +57,13 @@ class UsersController < ApplicationController
   end
 
   #before filter
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in !!!"
-      redirect_to login_path
-    end
-  end
+  # def logged_in_user
+  #   unless logged_in?
+  #     store_location
+  #     flash[:danger] = "Please log in !!!"
+  #     redirect_to login_path
+  #   end
+  # end
 
   #Confirm correct user to edit their profile
   def correct_user

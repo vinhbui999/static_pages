@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_many :microposts, dependent: :destroy
+    #dependent micropost to be destroyed when user destroy
     attr_accessor :remember_token, :activation_token, :reset_token
 
     before_save { self.email = email.downcase }
@@ -66,6 +68,10 @@ class User < ApplicationRecord
     # Sends activation email.
     def send_activation_email
         UserMailer.account_activation(self).deliver_now
+    end
+
+    def feed
+        Micropost.where("user_id=?", id)
     end
     
 
